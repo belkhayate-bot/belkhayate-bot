@@ -1,10 +1,12 @@
+from flask import Flask
 import os
 
-print("Belkhayate Bot is running...")
+app = Flask(__name__)
 
-def main():
-    print("Salam! Ana Belkhayate Bot")
-    print("Bot khdam mzyan!")
+@app.route('/')
+def home():
+    return "Salam! Ana Belkhayate Bot - khdam mzyan!"
 
 if __name__ == "__main__":
-    main()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
